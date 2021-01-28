@@ -1,0 +1,199 @@
+// ANCHOR: Font Import
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;300;400;500&display=swap')
+
+// ANCHOR: Color Variables
+$dc01: #1F2933
+$dc02: #323F4B
+$dc03: #3E4C59
+$dc04: #52606D
+$dc05: #616E7C
+$dc06: #7B8794
+$dc07: #9AA5B1
+
+$white: #ffffff
+$black: #000000
+$blurple: #507FFA
+$chlorophyll: #7ab351
+$greypile: #99AAB5
+$not-quite-black: #23272A
+$dark: #2C2F33
+// $dark-but-brighter: #383c41
+$dark-but-brighter: rgb(56, 60, 65)
+$dark-but-brighter2: #4a4e53
+
+// ANCHOR: Keyframe
+@keyframes cfade-in
+    0%
+        opacity: 0
+    50%
+        opacity: 0
+    100%
+        opacity: 1
+        // width: 100%
+@keyframes card-hover
+    0%
+        border-radius: 20px
+    70%
+        border-radius: 0
+        transform: translate(0, 0)
+        box-shadow: none
+    100%
+        border-radius: 0
+        transform: translate(10px, -10px)
+        box-shadow: -1px 1px $blurple, -2px 2px $blurple, -3px 3px $blurple, -4px 4px $blurple, -5px 5px $blurple, -6px 6px $blurple, -7px 7px $blurple, -8px 8px $blurple, -9px 9px $blurple, -10px 10px $blurple
+@keyframes card-hover-reverse
+    0%
+        border-radius: 0
+        transform: translate(10px, -10px)
+        box-shadow: -1px 1px $blurple, -2px 2px $blurple, -3px 3px $blurple, -4px 4px $blurple, -5px 5px $blurple, -6px 6px $blurple, -7px 7px $blurple, -8px 8px $blurple, -9px 9px $blurple, -10px 10px $blurple
+    30%
+        border-radius: 0
+        transform: translate(0, 0)
+        box-shadow: none
+    100%
+        border-radius: 20px
+
+
+html
+    color: $white
+    font-size: 1.25rem
+    font-family: 'Roboto Mono', monospace
+    scroll-behavior: smooth
+
+body
+    // width: 100vw
+    // height: 100vh
+    min-height: 100vh
+    top: 0
+    left: 0
+    // position: absolute
+    margin: 0
+    // background: $dc01
+    text-align: center
+    // background-image: url('/img/background.jpg')
+    // background-repeat: no-repeat
+    // background-position: center
+    // background-size: cover
+    background: $dc01
+    // background: linear-gradient(red, transparent), linear-gradient(to top left, lime, transparent), linear-gradient(to top right, blue, transparent)
+    background-blend-mode: screen, darken
+    // filter: brightness(50%)
+
+main
+    // width: 100%
+    // width: 0
+    display: flex
+    flex-direction: column
+    padding: 3vh 5vw
+    // opacity: 0
+    animation: cfade-in 1s ease-in-out
+
+button
+    padding: 20px
+    border: none
+    outline: none
+    background-color: $chlorophyll
+    color: $not-quite-black
+
+h1
+    font-size: 3rem
+h2
+    font-size: 2.25rem
+h3
+    font-size: 2rem
+h4
+    font-size: 1.75rem
+h5
+    font-size: 1.5rem
+a
+    text-decoration: none
+    color: $white
+
+.main-header
+    // background: fi
+    width: max-content
+    margin: 0 auto
+    padding: 40px
+    background-color: rgba(255, 255, 255, 0.125)
+    border: solid rgba(255, 255, 255, 0.75) 1px
+    border-radius: 50px
+    > * > *:last-child
+        margin-bottom: 0
+    > h1
+        margin-top: 0
+    > h1, .main-header--desc
+
+.main-header--desc
+    width: max-content
+    margin: 0 auto
+    // left: 50%
+    text-align: left
+
+.blur-bg
+    width: 100%
+    height: 100%
+    // background: rgba(0, 0, 0, 1)
+    filter: blur(10px), brightness(-50%)
+
+.card
+    width: 330px
+    // min-height: 330px
+    display: flex
+    flex-direction: column
+    // background: $white
+    border-radius: 20px
+    margin: 20px
+    background: $dc03
+    // color: $black
+    color: $white
+    overflow: hidden
+    // transition: 0.2s
+    // animation: card-hover 0.4s ease-in-out 0s 1 reverse
+    // animation-fill-mode: forwards
+    animation: card-hover-reverse 0.25s ease-in-out
+    animation-direction: normal
+    animation-fill-mode: forwards
+    &:hover
+        // border-radius: 0
+        // transform: translate(10px, -10px)
+        // box-shadow: -1px 1px $blurple, -2px 2px $blurple, -3px 3px $blurple, -4px 4px $blurple, -5px 5px $blurple, -6px 6px $blurple, -7px 7px $blurple, -8px 8px $blurple, -9px 9px $blurple, -10px 10px $blurple
+        animation: card-hover 0.25s ease-in-out
+        animation-direction: normal
+        animation-fill-mode: both
+
+.card-image
+    width: 100%
+
+.card-desc
+    padding: 30px
+    // height: 200px
+    // display: flexbox
+    // text-align: left
+    line-height: 1.5rem
+
+.card-desc--title
+    // transform: translateX(50%) translateY(50%)
+    // display: inline-flex
+    // align-self: center
+    margin: 0
+    font-size: 1.5rem
+
+.card-desc--sum
+    // height: 200px
+    // white-space: pre-wrap
+    // overflow: hidden
+    // text-overflow: ellipsis
+
+.group-vl, .group-hl
+    width: max-content
+    margin: 0 auto
+    display: flex
+
+.group-hl
+    max-width: 1170px
+    // flex-direction: row
+    flex-flow: row wrap
+    justify-content: center
+
+.group-vl
+    flex-direction: column
