@@ -1,2 +1,2 @@
 # Work-Shortcut
-localhost navigation design
+localhost navigation page
