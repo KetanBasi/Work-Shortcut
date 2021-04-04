@@ -10,6 +10,9 @@ $dc05: #616E7C
 $dc06: #7B8794
 $dc07: #9AA5B1
 
+$background: #3b3b3b
+$card-push-shadow: #1b1b1b
+
 $white: #ffffff
 $black: #000000
 $blurple: #507FFA
@@ -21,6 +24,9 @@ $dark: #2C2F33
 $dark-but-brighter: rgb(56, 60, 65)
 $dark-but-brighter2: #4a4e53
 
+// ANCHOR: Variables
+$card-border-radius: 40px
+
 // ANCHOR: Keyframe
 @keyframes cfade-in
     0%
@@ -29,29 +35,36 @@ $dark-but-brighter2: #4a4e53
         opacity: 0
     100%
         opacity: 1
-        // width: 100%
 @keyframes card-hover
     0%
-        border-radius: 20px
+        border-radius: $card-border-radius
+        box-shadow: 20px 20px 60px #323232, -20px -20px 60px #444444
+        z-index: 0
     70%
         border-radius: 0
         transform: translate(0, 0)
         box-shadow: none
+        z-index: 1
     100%
         border-radius: 0
         transform: translate(10px, -10px)
-        box-shadow: -1px 1px $blurple, -2px 2px $blurple, -3px 3px $blurple, -4px 4px $blurple, -5px 5px $blurple, -6px 6px $blurple, -7px 7px $blurple, -8px 8px $blurple, -9px 9px $blurple, -10px 10px $blurple
+        box-shadow: -1px 1px $card-push-shadow, -2px 2px $card-push-shadow, -3px 3px $card-push-shadow, -4px 4px $card-push-shadow, -5px 5px $card-push-shadow, -6px 6px $card-push-shadow, -7px 7px $card-push-shadow, -8px 8px $card-push-shadow, -9px 9px $card-push-shadow, -10px 10px $card-push-shadow, 20px 20px 60px #323232, -20px -20px 60px #444444
+        z-index: 1
 @keyframes card-hover-reverse
     0%
         border-radius: 0
         transform: translate(10px, -10px)
-        box-shadow: -1px 1px $blurple, -2px 2px $blurple, -3px 3px $blurple, -4px 4px $blurple, -5px 5px $blurple, -6px 6px $blurple, -7px 7px $blurple, -8px 8px $blurple, -9px 9px $blurple, -10px 10px $blurple
+        box-shadow: -1px 1px $card-push-shadow, -2px 2px $card-push-shadow, -3px 3px $card-push-shadow, -4px 4px $card-push-shadow, -5px 5px $card-push-shadow, -6px 6px $card-push-shadow, -7px 7px $card-push-shadow, -8px 8px $card-push-shadow, -9px 9px $card-push-shadow, -10px 10px $card-push-shadow, 20px 20px 60px #323232, -20px -20px 60px #444444
+        z-index: 1
     30%
         border-radius: 0
         transform: translate(0, 0)
         box-shadow: none
+        z-index: 1
     100%
-        border-radius: 20px
+        border-radius: $card-border-radius
+        box-shadow: 20px 20px 60px #323232, -20px -20px 60px #444444
+        z-index: 0
 
 
 html
@@ -61,27 +74,15 @@ html
     scroll-behavior: smooth
 
 body
-    // width: 100vw
-    // height: 100vh
     min-height: 100vh
     top: 0
     left: 0
-    // position: absolute
     margin: 0
-    // background: $dc01
     text-align: center
-    // background-image: url('/img/background.jpg')
-    // background-repeat: no-repeat
-    // background-position: center
-    // background-size: cover
-    background: $dc01
-    // background: linear-gradient(red, transparent), linear-gradient(to top left, lime, transparent), linear-gradient(to top right, blue, transparent)
+    background: $background
     background-blend-mode: screen, darken
-    // filter: brightness(50%)
 
 main
-    // width: 100%
-    // width: 0
     display: flex
     flex-direction: column
     padding: 3vh 5vw
@@ -98,25 +99,24 @@ button
 h1
     font-size: 3rem
 h2
-    font-size: 2.25rem
+    font-size: 2.5rem
 h3
     font-size: 2rem
 h4
-    font-size: 1.75rem
-h5
     font-size: 1.5rem
+h5
+    font-size: 1.25rem
 a
     text-decoration: none
     color: $white
 
 .main-header
-    // background: fi
     width: max-content
     margin: 0 auto
     padding: 40px
-    background-color: rgba(255, 255, 255, 0.125)
-    border: solid rgba(255, 255, 255, 0.75) 1px
     border-radius: 50px
+    background: #3b3b3b
+    box-shadow: inset 20px 20px 60px #222222, inset -20px -20px 60px #545454
     > * > *:last-child
         margin-bottom: 0
     > h1
@@ -126,37 +126,27 @@ a
 .main-header--desc
     width: max-content
     margin: 0 auto
-    // left: 50%
     text-align: left
 
 .blur-bg
     width: 100%
     height: 100%
-    // background: rgba(0, 0, 0, 1)
     filter: blur(10px), brightness(-50%)
 
 .card
     width: 330px
-    // min-height: 330px
     display: flex
     flex-direction: column
-    // background: $white
-    border-radius: 20px
+    border-radius: $card-border-radius
     margin: 20px
-    background: $dc03
-    // color: $black
+    background: $background
     color: $white
     overflow: hidden
-    // transition: 0.2s
-    // animation: card-hover 0.4s ease-in-out 0s 1 reverse
-    // animation-fill-mode: forwards
+    box-shadow: 20px 20px 60px #323232, -20px -20px 60px #444444
     animation: card-hover-reverse 0.25s ease-in-out
     animation-direction: normal
     animation-fill-mode: forwards
     &:hover
-        // border-radius: 0
-        // transform: translate(10px, -10px)
-        // box-shadow: -1px 1px $blurple, -2px 2px $blurple, -3px 3px $blurple, -4px 4px $blurple, -5px 5px $blurple, -6px 6px $blurple, -7px 7px $blurple, -8px 8px $blurple, -9px 9px $blurple, -10px 10px $blurple
         animation: card-hover 0.25s ease-in-out
         animation-direction: normal
         animation-fill-mode: both
@@ -166,26 +156,15 @@ a
 
 .card-desc
     padding: 30px
-    // height: 200px
-    // display: flexbox
-    // text-align: left
     line-height: 1.5rem
 
 .card-desc--title
-    // transform: translateX(50%) translateY(50%)
-    // display: inline-flex
-    // align-self: center
     margin: 0
     font-size: 1.5rem
 
 .card-desc--sum
-    // height: 200px
-    // white-space: pre-wrap
-    // overflow: hidden
-    // text-overflow: ellipsis
 
 .group-vl, .group-hl
-    width: max-content
     margin: 0 auto
     display: flex
 
@@ -197,3 +176,8 @@ a
 
 .group-vl
     flex-direction: column
+
+.hub
+    background: #faaa32
+    padding: 3px
+    border-radius: 5px
